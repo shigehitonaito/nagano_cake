@@ -9,6 +9,7 @@ devise_for :admins, :controllers => {
 
  namespace :admin do
   	resources :items
+  	get 'end_users' => 'end_users#index'
   end
 
 
@@ -21,7 +22,8 @@ devise_for :admins, :controllers => {
 }
 
 namespace :public do
-   resource :end_users
+   resource :end_users, only: [:edit, :update, :show]
+    delete '/end_users' => 'end_users#hide'
   end
 
 

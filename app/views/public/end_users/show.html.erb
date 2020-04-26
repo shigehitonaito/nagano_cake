@@ -1,2 +1,10 @@
 <h1>マイページになる予定</h1>
-<%= link_to "ログアウト",  destroy_end_user_session_path, method: :delete %>
+<%= @user.family_name %>
+<%= @user.first_name %>
+<%= @user.kana_family_name %>
+<%= @user.kana_first_name %>
+<%= @user.email %>
+
+
+<%= link_to "編集する" ,edit_public_end_users_path %>
+<%= link_to "退会する",public_end_users_path, method: :delete, "data-confirm" => "本当に退会されますか？" %>

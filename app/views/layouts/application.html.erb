@@ -12,9 +12,9 @@
   <body>
 
    <% if end_user_signed_in? %>
-      <%= link_to "マイページ", "#" %>
+      <%= link_to "マイページ", public_end_users_path %>
       <%= link_to "商品一覧", "#" %>
-      <%= link_to "ログアウト",destroy_admin_session_path, method: :delete %>
+      <%= link_to "ログアウト",destroy_end_user_session_path, method: :delete %>
     <% elsif admin_signed_in? %>
       <%= link_to "受注商品", "#" %>
       <%= link_to "商品登録", "#" %>

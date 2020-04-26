@@ -1,0 +1,33 @@
+<h3>会員一覧</h3>
+
+
+
+<table>
+	<thead>
+		<tr>
+			<th>会員ID</th>
+			<th>氏名</th>
+			<th>メールアドレス</th>
+			<th>ステータス</th>
+		</tr>
+	</thead>
+	<tbody>
+        <% @users.each do |user| %>
+		<tr>
+			<td><%= user.id %></td>
+			<td>
+			    <%= user.family_name %>
+				<%= user.first_name %>
+			</td>
+			<td><%= user.email %></td>
+			  <% if user.deleted_at == nil %>
+                <td>有効</td>
+              <% else %>
+                <td>無効</td>
+              <% end %>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
