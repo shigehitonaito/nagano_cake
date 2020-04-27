@@ -1,4 +1,78 @@
 <%= form_for(@user, url: public_end_users_path) do |f| %>
-  <%= f.email_field :email %>
-  <%= f.submit '編集する' %>
+
+
+<table>
+	<tbody>
+		<tr>
+			<td>
+				<p>名前</p>
+			</td>
+			<td>
+				<p>(姓)<p>
+			</td>
+			<td>
+				<%= f.text_field :family_name %>
+			</td>
+			<td>
+				<p>(名)</p>
+			</td>
+			<td>
+				<%= f.text_field :first_name %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<P>フリガナ</P>
+			</td>
+			<td>
+				<p>(セイ)</p>
+			</td>
+			<td>
+				<%= f.text_field :kana_family_name %>
+			</td>
+			<td>
+				<p>(メイ)</p>
+			</td>
+			<td>
+				<%= f.text_field :kana_first_name %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<P>メールアドレス</P>
+			</td>
+			<td>
+				 <%= f.email_field :email %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>郵便番号(ハイフンなし)</p>
+			</td>
+			<td>
+				 <%= f.text_field :post_number %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<P>住所</P>
+			</td>
+			<td>
+				 <%= f.text_field :address %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<P>電話番号(ハイフンなし)</P>
+			</td>
+			<td>
+				<%= f.text_field :phone_number %>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+  <%= f.submit '編集内容を保存する'%>
 <% end %>
+
+<%= link_to '退会する', public_end_users_comfilm_path %>

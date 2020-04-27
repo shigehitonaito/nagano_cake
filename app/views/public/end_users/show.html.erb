@@ -1,10 +1,44 @@
-<h1>マイページになる予定</h1>
-<%= @user.family_name %>
-<%= @user.first_name %>
-<%= @user.kana_family_name %>
-<%= @user.kana_first_name %>
-<%= @user.email %>
 
 
+<p>登録情報</p>
 <%= link_to "編集する" ,edit_public_end_users_path %>
-<%= link_to "退会する",public_end_users_path, method: :delete, "data-confirm" => "本当に退会されますか？" %>
+<%= link_to "パスワードを変更する", "#" %>
+
+<table>
+	<tbody>
+		<tr>
+			<td>氏名</td>
+			<td><%= @user.family_name %><%= @user.first_name %></td>
+		</tr>
+		<tr>
+			<td>カナ</td>
+			<td><%= @user.kana_family_name %><%= @user.kana_first_name %></td>
+		</tr>
+		<tr>
+			<td>郵便番号</td>
+			<td><%= @user.post_number %></td>
+		</tr>
+		<tr>
+			<td>住所</td>
+			<td><%= @user.address %></td>
+		</tr>
+		<tr>
+			<td>電話番号</td>
+			<td><%= @user.phone_number %></td>
+		</tr>
+		<tr>
+			<td>メールアドレス</td>
+			<td><%= @user.email %></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>配送先</p>
+<%= link_to  "一覧を見る", "#" %>
+<p>注文履歴</p>
+<%= link_to "一覧を見る", "#" %>
+
+
+
+
+

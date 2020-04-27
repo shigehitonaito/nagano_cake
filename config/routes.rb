@@ -24,6 +24,11 @@ devise_for :admins, :controllers => {
 namespace :public do
    resource :end_users, only: [:edit, :update, :show]
     delete '/end_users' => 'end_users#hide'
+    get 'end_users/comfilm' => 'end_users#comfilm'
+  end
+
+  scope module: :public do
+  	root 'items#index'
   end
 
 
