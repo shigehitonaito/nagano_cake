@@ -1,1 +1,28 @@
 <h1>管理者用商品一覧画面</h1>
+<%= link_to "新規商品登録",new_admin_item_path %><br>
+<table>
+	<thead>
+		<tr>
+			<th>商品ID</th>
+			<th>商品名</th>
+			<th>税抜き価格</th>
+			<th>ジャンル</th>
+			<th>販売ステータス</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @items.each do |item| %>
+		<tr>
+			<td><%= item.id %></td>
+			<td><%= item.name %></td>
+			<td><%= item.untax_price %></td>
+			<td><%= item.genre.name %></td>
+			<% if item.sale_status == true %>
+			  <td>販売中</td>
+			<% else %>
+			  <td>販売停止中</td>
+			<% end %>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

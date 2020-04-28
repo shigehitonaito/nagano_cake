@@ -7,4 +7,13 @@ class EndUser < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validates :family_name, presence: true
+  validates :first_name, presence: true
+  validates :kana_family_name, presence: true
+  validates :kana_first_name, presence: true
+  validates :email, presence: true
+  validates :post_number, presence: true
+  validates :phone_number, presence: true
+  validates :address, presence: true
 end

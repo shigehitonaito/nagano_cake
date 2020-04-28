@@ -1,0 +1,20 @@
+
+
+
+<%= form_for @item, url: admin_items_path  do |f| %>
+
+  <%= f.attachment_field :image %><br>
+  <%= f.label :商品名 %>
+  <%= f.text_field :name %><br>
+  <%= f.label :商品説明 %>
+  <%= f.text_area :introduction %><br>
+  <%= f.label :商品ジャンル %>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name%><br>
+  <%= f.label :税抜き価格　%>
+  <%= f.text_field :untax_price %><br>
+  <%= f.radio_button :sale_status, true %>
+  <%= f.label :sale_status, "販売中" %>
+  <%= f.radio_button :sale_status, false %>
+  <%= f.label :sale_status, "販売停止" %>
+  <%= f.submit "新規登録" %>
+<% end %>

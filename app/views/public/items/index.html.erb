@@ -1,1 +1,7 @@
-index.html.erb
+<br>
+<% @items.each do |item| %>
+
+  <%= attachment_image_tag item, :image, :fill, 100,100 %><br>
+  <%= item.name %><br>
+  ¥<%= item.untax_price*108/100 %><br>
+<% end %>

@@ -1,0 +1,20 @@
+
+<br>
+<%= attachment_image_tag @item, :image , :fill, 100, 100 %>
+
+<p>商品名</p>
+<%= @item.name %><br>
+<p>商品紹介</p>
+<%= @item.introduction %>
+<P>ジャンル</P>
+<%= @item.genre.name %>
+<br>
+
+<p>税込価格(税抜き価格)</p>
+<%= @item.untax_price*108/100 %>(<%= @item.untax_price %>)円<br>
+<p>販売ステータス</p>
+<% if @item.sale_status == true %>
+  <p>販売中</p>
+<% else %>
+  <p>販売停止</p>
+<% end %>

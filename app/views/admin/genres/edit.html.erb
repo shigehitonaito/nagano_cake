@@ -1,0 +1,8 @@
+<%= form_for @genre,url: admin_genre_path do  |f| %>
+  <%= f.text_field :name %>
+  <%= f.radio_button :active_status, true %>
+  <%= f.label :active_status, "有効" %>
+  <%= f.radio_button :active_status, false %>
+  <%= f.label :active_status, "無効" %>
+  <%= f.submit "追加" %>
+<% end %>
