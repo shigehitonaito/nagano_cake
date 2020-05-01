@@ -16,4 +16,6 @@ class EndUser < ApplicationRecord
   validates :post_number, presence: true
   validates :phone_number, presence: true
   validates :address, presence: true
+
+  has_many :cart_items
 end

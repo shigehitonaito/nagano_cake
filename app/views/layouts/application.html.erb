@@ -15,7 +15,7 @@
       <h1>end_users#top</h1>
       <%= link_to "マイページ", public_end_users_path %>
       <%= link_to "商品一覧", public_items_path %>
-      <%= link_to "カート", "#" %>
+      <%= link_to "カート", public_cart_items_path %>
       <%= link_to "ログアウト",destroy_end_user_session_path, method: :delete %>
     <% elsif admin_signed_in? %>
       <h1>admins#top</h1>

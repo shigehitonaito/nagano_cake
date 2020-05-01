@@ -27,6 +27,8 @@ namespace :public do
     delete '/end_users' => 'end_users#hide'
     resources :items, only: [:index, :show]
     get 'end_users/comfilm' => 'end_users#comfilm'
+    resources :cart_items
+    delete '/cart_items' => 'cart_items#destroy_all', as: :destroy_all
   end
 
   scope module: :public do
