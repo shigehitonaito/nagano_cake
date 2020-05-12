@@ -1,0 +1,67 @@
+<h1>注文履歴詳細</h1>
+
+<table>
+	<tbody>
+		<tr>
+			<td>購入者</td>
+			<td><%= @order.end_user.family_name %><%= @order.end_user.first_name %></td>
+		</tr>
+		<tr>
+			<td>配送先</td>
+			<td><%= @order.post_number %><%= @order.address %><%= @order.name %> </td>
+		</tr>
+		<tr>
+			<td>支払い方法</td>
+			<td>
+				<% if @order.payment == 0 %>
+				  <p>クレジットカード</p>
+				<% elsif @order.payment ==1 %>
+				  <P>銀行振込</P>
+				<% else %>
+				  <P>支払い方法が選択されていません。</P>
+				<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td>注文ステータス</td>
+			<td>
+				<%= form_with(url:  admin_order_path(@order.id), method: :put, local: true) do |f| %>
+				<%= f.select :order_status, [['入金待ち', 0], ['入金確認', 1], ['製作中', 2],['発送準備中', 3],['発送済み', 4]] %>
+
+				<%= f.submit '更新' %>
+				<% end %>
+			</td>
+		</tr>
+	</tbody>
+
+
+	<table border>
+		</caption>
+		<thead>
+			<tr>
+				<th>商品名</th>
+				<th>単価(税込)</th>
+				<th>数量</th>
+				<th>小計</th>
+				<th>製品ステータス</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @order.order_detiles.each do |order_detile| %>
+				<tr>
+					<td><%= order_detile.item.name %></td>
+					<td><%= order_detile.price %></td>
+					<td><%= order_detile.amount %></td>
+					<td><%= order_detile.price*order_detile.amount %></td>
+					<td>
+						<%= form_with(model: order_detile, url:  admin_order_detile_path(order_detile.id), method: :put, local: true) do |f| %>
+							<%= f.select :production_status, OrderDetile.production_statuses_i18n.invert, {} %>
+							<%= f.submit '更新' %>
+						<% end %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+

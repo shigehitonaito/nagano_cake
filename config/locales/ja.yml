@@ -1,0 +1,19 @@
+ja:
+  enums:
+    order:
+      order_status:
+        waiting: "入金待ち"
+        comfilm: "入金確認"
+        doing: "製作中"
+        prefre: "発送準備中"
+        complete: "発送済み"
+    order_detile:
+      production_status:
+        notyet: "着手不可"
+        waiting: "製作待ち"
+        doing: "製作中"
+        complete: "製作完了"
+       
+       
+
+       

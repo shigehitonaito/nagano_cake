@@ -10,6 +10,12 @@ class Public::CartItemsController < ApplicationController
 
 	def create
 		cart_item = CartItem.new(cart_item_params)
+		item = cart_item.item
+		if item.posted_by?(current_end_user)
+		   cart_item.update
+		else
+		   cart_item.save
+		end
 		cart_item.save
 		redirect_to public_cart_items_path
 	end

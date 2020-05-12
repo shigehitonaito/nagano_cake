@@ -1,0 +1,9 @@
+<%= form_for(@address, url: public_addresses_path) do |f| %>
+  <P>郵便番号</P>
+  <%= f.text_field :post_number %>
+  <P>住所</P>
+  <%= f.text_field :address %>
+  <P>宛名</P>
+  <%= f.text_field :name %>
+  <%= f.submit "登録" %>
+<% end %>

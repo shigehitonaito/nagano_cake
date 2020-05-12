@@ -1,0 +1,72 @@
+<h3>注文情報確認</h3>
+
+<table border >
+	<thead>
+		<tr>
+			<th>商品名</th>
+			<th>単価(税込)</th>
+			<th>数量</th>
+			<th>小計</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @cart_items.each do |cart_item| %>
+		<tr>
+			<td><%= attachment_image_tag cart_item.item, :image, :fill, 60, 60, fallback: "no_image.png", size: "100x100" %> <%= cart_item.item.name %></td>
+			<td><%= cart_item.item.untax_price*108/100 %></td>
+			<td><%= cart_item.amount %></td>
+			<td><%= cart_item.item.untax_price*108/100*cart_item.amount %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<table border>
+	<tbody>
+		<tr>
+			<td>送料</td>
+			<td>800</td>
+		</tr>
+		<tr>
+			<td>商品合計</td>
+			<td><%= @order.total_price %></td>
+		</tr>
+		<tr>
+			<td>請求金額</td>
+			<td><%= @order.total_price + 800 %></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>支払い方法</h3>
+<% if @order.payment == 0 %>
+  <p>クレジットカード</p>
+<% elsif @order.payment == 1 %>
+<P>銀行振込</P>
+<% else %>
+<P>お支払い方法が選択されていません。</P>
+<% end %>
+
+
+<h3>お届け先</h3>
+<%= @order.post_number %>
+<%= @order.address %>
+<%= @order.name %>
+
+<%= form_with  url:  public_orders_path, method: :post, local: true do |f| %>
+   <%= f.hidden_field :order_name, value: @order.name %>
+   <%= f.hidden_field :order_post_number, value: @order.post_number %>
+   <%= f.hidden_field :order_address, value: @order.address %>
+   <%= f.hidden_field :order_payment, value: @order.payment %>
+   <%= f.hidden_field :order_postage, value: @order.postage %>
+   <%= f.hidden_field :order_total_price, value: @order.total_price %>
+   <%= f.submit "購入を確定する" %>
+<% end %>
+
+
+
+
+
+
+
+

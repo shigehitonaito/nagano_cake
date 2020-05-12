@@ -1,0 +1,8 @@
+<% @addresses.each do |address| %>
+<P><郵便番号/P><br>
+ <%= address.post_number %><br>
+ <P>住所</P><br>
+ <%= address.address %><br>
+ <P>宛名</P><br>
+ <%= address.name %>
+<% end %>
