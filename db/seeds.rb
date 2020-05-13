@@ -17,7 +17,7 @@ Genre.create!(
 	)
 
 Item.create!(
-	genre_id: '7',
+	genre_id: '1',
 	name: '苺のショートケーキ',
 	introduction: '当店一番人気のケーキです。',
 	untax_price: '500',
