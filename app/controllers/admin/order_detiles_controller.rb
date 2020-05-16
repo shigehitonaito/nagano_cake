@@ -8,11 +8,11 @@ class Admin::OrderDetilesController < ApplicationController
 			order.order_status = 2
 			order.update(order_params)
 		elsif OrderDetile.where(order_id: order.id).count == OrderDetile.where(order_id: order.id).where(production_status: 3).count
-			order.order_status = 4
+			order.order_status = 3
 			order.update(order_params)
 		end
 		redirect_to admin_items_path
-	end 
+	end
 	private
 	def order_detile_params
 		params.require(:order_detile).permit(:production_status)

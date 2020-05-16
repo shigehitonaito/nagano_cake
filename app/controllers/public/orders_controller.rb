@@ -51,7 +51,7 @@ class Public::OrdersController < ApplicationController
 		@order.postage = 800
 		if address == "address1"
 		  @order.address = current_end_user.address
-		  @@order.post_number = current_end_user.post_number
+		  @order.post_number = current_end_user.post_number
 		  @order.name = current_end_user.family_name + current_end_user.first_name
 		elsif address == "address2"
 		  list_address = Address.find(params[:address])

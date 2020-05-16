@@ -14,6 +14,7 @@ Admin.create!(
 
 Genre.create!(
 	name: 'ケーキ',
+	active_status: 'FALSE'
 	)
 
 Item.create!(

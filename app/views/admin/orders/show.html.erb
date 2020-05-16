@@ -25,10 +25,9 @@
 		<tr>
 			<td>注文ステータス</td>
 			<td>
-				<%= form_with(url:  admin_order_path(@order.id), method: :put, local: true) do |f| %>
-				<%= f.select :order_status, [['入金待ち', 0], ['入金確認', 1], ['製作中', 2],['発送準備中', 3],['発送済み', 4]] %>
-
-				<%= f.submit '更新' %>
+				<%= form_with(model: @order, url:  admin_order_path(@order.id), method: :put, local: true) do |f| %>
+					<%= f.select :order_status, Order.order_statuses_i18n.invert, {} %>
+					<%= f.submit '更新' %>
 				<% end %>
 			</td>
 		</tr>
@@ -63,5 +62,23 @@
 			<% end %>
 		</tbody>
 	</table>
+
+	<<table>
+		<tbody>
+			<tr>
+				<td>商品合計</td>
+				<td><%= @order.total_price %>円</td>
+			</tr>
+			<tr>
+				<td>送料</td>
+				<td><%= @order.postage %>円</td>
+			</tr>
+			<tr>
+				<td>請求金額合計</td>
+				<td><%= @order.total_price + @order.postage %>円</td>
+			</tr>
+		</tbody>
+	</table>
+
 
 

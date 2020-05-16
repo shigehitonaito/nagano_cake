@@ -4,7 +4,7 @@ class Public::AddressesController < ApplicationController
     def index
     	@addresses = Address.where(end_user_id: current_end_user.id)
     end
-	def new 
+	def new
 		@address = Address.new
 	end
 
